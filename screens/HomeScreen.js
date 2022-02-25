@@ -1,9 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View, ScrollView, StyleSheet, Dimensions, ImageBackground } from 'react-native';
-import { Octicons } from '@expo/vector-icons';
+import { Entypo, Octicons } from '@expo/vector-icons';
+import { Dimensions, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native';
 import {
-  ProgressChart,
+  ProgressChart
 } from "react-native-chart-kit";
+
+
 
 
 export function HomeScreen({ navigation }) {
@@ -37,13 +38,65 @@ export function HomeScreen({ navigation }) {
           <Text style={{ fontSize: 32, fontWeight: 'bold', color: 'white' }}>For You</Text>
           <Text style={{ fontSize: 16, color: 'white' }}>Feb 18 2022, Friday</Text>
           <View style={{
-            height: 150, width: '100%', backgroundColor: 'rgb(182, 215, 205)', marginTop: 16, marginBottom: 16, borderRadius: 25,
+            height: 150, width: '100%', backgroundColor: 'rgb(182, 215, 205)', marginTop: 16, marginBottom: 32, borderRadius: 25,
             elevation: 1,
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 0.1,
             shadowRadius: 3,
-          }}></View>
-          <Text style={{ position: 'absolute', right: 25, bottom: 16, color: 'white', fontSize: 12, marginTop: 16 }}>Show More</Text>
+            alignItems: 'center'
+          }}>
+
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 8 }}>
+              <Entypo name="chevron-thin-left" size={24} color="rgb(255, 255, 255)" />
+              <Text style={{ color: 'rgb(255, 255, 255)', fontWeight: 'bold' }}>Jan 13 - Jan 19, 2022</Text>
+              <Entypo name="chevron-thin-right" size={24} color="rgb(255, 255, 255)" />
+            </View>
+
+            <View style={{ flexDirection: 'row', height: 90, marginTop: 8, justifyContent: 'space-evenly', width: '100%' }}>
+              <View style={styles.weekDay}>
+                <Text style={styles.weekDayText}>S</Text>
+                <Text style={styles.weekDayText}>13</Text>
+                <View style={styles.dateCircle}></View>
+              </View>
+              <View style={styles.weekDay}>
+                <Text style={styles.weekDayText}>M</Text>
+                <Text style={styles.weekDayText}>14</Text>
+                <View style={styles.dateCircle}></View>
+              </View>
+              <View style={styles.weekDay}>
+                <Text style={styles.weekDayText}>T</Text>
+                <Text style={styles.weekDayText}>15</Text>
+                <View style={styles.dateCircle}></View>
+              </View>
+              <View style={styles.weekDay}>
+                <Text style={styles.weekDayText}>W</Text>
+                <Text style={styles.weekDayText}>16</Text>
+                <View style={styles.dateCircle}></View>
+              </View>
+              <View style={styles.weekDay}>
+                <Text style={styles.weekDayText}>T</Text>
+                <Text style={styles.weekDayText}>17</Text>
+                <View style={styles.dateCircle}></View>
+              </View>
+              <View style={styles.weekDay}>
+                <Text style={styles.weekDayText}>F</Text>
+                <Text style={styles.weekDayText}>18</Text>
+                <View style={styles.dateCircle}></View>
+              </View>
+              <View style={styles.weekDay}>
+                <Text style={styles.weekDayText}>S</Text>
+                <Text style={styles.weekDayText}>19</Text>
+                <View style={styles.dateCircle}></View>
+              </View>
+            </View>
+
+          </View>
+          <View style={{ position: 'absolute', right: 25, bottom: 16, marginTop: 16, flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={{ color: 'white', fontSize: 12 }}>Show More</Text>
+            <Entypo name="chevron-thin-down" size={16} color="rgb(255, 255, 255)" />
+          </View>
+
+
         </View>
 
         <View style={styles.card}>
@@ -169,5 +222,19 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomStartRadius: 25,
     borderBottomEndRadius: 25,
+  },
+  dateCircle: {
+    width: 30, height: 30, backgroundColor: 'rgb(244, 249, 248)', borderRadius: 40, elevation: 1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+  },
+  weekDayText: {
+    color: 'rgb(244, 249, 248)',
+    fontWeight: 'bold'
+  },
+  weekDay: {
+    alignItems: 'center',
+    justifyContent: 'space-evenly'
   }
 });
