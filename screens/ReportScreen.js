@@ -6,6 +6,7 @@ import {
   BarChart,
   LineChart
 } from "react-native-chart-kit";
+import { FontAwesome } from '@expo/vector-icons';
 import { ProgressLine } from '../components/progressLine';
 
 export function ReportScreen({ navigation, route }) {
@@ -49,6 +50,8 @@ export function ReportScreen({ navigation, route }) {
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     barRadius: 5,
+    labelColor: () => 'rgb(150, 150, 150)',
+    decimalPlaces: 0,
     useShadowColorFromDataset: false // optional
   };
 
@@ -60,6 +63,7 @@ export function ReportScreen({ navigation, route }) {
     color: () => 'rgb(199, 125, 111)',
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
+    decimalPlaces: 0,
     labelColor: () => 'rgb(150, 150, 150)',
     useShadowColorFromDataset: false // optional
   };
@@ -118,7 +122,32 @@ export function ReportScreen({ navigation, route }) {
         </View>
 
       </View> : <View>
-        <Text>Mental Health</Text>
+        <Text style={{ color: 'black', fontWeight: 'bold', margin: 16 }}
+        >Mental Health</Text>
+
+
+
+        <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', margin: 16 }}>
+          <View style={styles.highlight}>
+            <Text style={styles.highlightTitle}>Weekly average</Text>
+            <Text style={styles.highlightValue}>6</Text>
+          </View>
+
+          <View style={styles.highlight}>
+            <Text style={styles.highlightTitle}>Week-over-week</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+              <FontAwesome name="long-arrow-down" style={{ marginRight: 8 }} size={24} color='rgb(211, 166, 158)' />
+              <Text style={styles.highlightValue}>20%</Text>
+            </View>
+          </View>
+
+          <View style={styles.highlight}>
+            <Text style={styles.highlightTitle}>Goal</Text>
+            <Text style={styles.highlightValue}>8</Text>
+          </View>
+        </View>
+
+
 
         <View
           style={{
@@ -128,12 +157,11 @@ export function ReportScreen({ navigation, route }) {
 
           <BarChart
             data={weeklyData}
-            width={screenWidth * 0.9}
+            width={screenWidth * 0.85}
             height={220}
             fromZero={true}
             chartConfig={barChartConfig}
             withVerticalLabels={false}
-            withHorizontalLabels={false}
             withCustomBarColorFromData={true}
             style={{ position: 'absolute', left: -15, top: 0 }}
             flatColor={true}
@@ -143,17 +171,20 @@ export function ReportScreen({ navigation, route }) {
 
           <LineChart
             data={weeklyData}
-            width={screenWidth * 0.9}
+            width={screenWidth * 0.85}
             withShadow={false}
             height={220}
             fromZero={true}
             chartConfig={lineChartConfig}
             withVerticalLines={false}
+            withHorizontalLabels={false}
             style={{
               opacity: 1,
             }}
           />
         </View>
+
+        <View style={styles.separator} />
 
       </View>}
     </ ScrollView >
@@ -183,6 +214,25 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '80%',
     margin: 16
+  },
+  highlightTitle: {
+    color: 'rgb(150, 150, 150)',
+    fontSize: 12
+  },
+  highlightValue: {
+    color: 'rgb(211, 166, 158)',
+    fontSize: 28
+  },
+  highlight: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  separator: {
+    width: '100%',
+    marginTop: 24,
+    borderRadius: 15,
+    borderBottomColor: 'rgb(230, 230, 230)',
+    borderBottomWidth: 1,
   },
 });
 

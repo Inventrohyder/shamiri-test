@@ -11,7 +11,6 @@ export function ProgressLine(props) {
     <View
       style={{
         width: `${parseFloat(props.rating * 10)}%`,
-        color: 'green',
         marginTop: 24,
         borderRadius: 15,
         borderBottomColor: props.color,
