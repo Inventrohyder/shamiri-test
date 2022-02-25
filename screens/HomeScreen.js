@@ -33,6 +33,19 @@ export function HomeScreen({ navigation }) {
 
       <ScrollView>
 
+        <View style={{ padding: 24, backgroundColor: 'rgb(150, 187, 174)', width: screenWidth, borderBottomEndRadius: 25, borderBottomStartRadius: 25 }}>
+          <Text style={{ fontSize: 32, fontWeight: 'bold', color: 'white' }}>For You</Text>
+          <Text style={{ fontSize: 16, color: 'white' }}>Feb 18 2022, Friday</Text>
+          <View style={{
+            height: 150, width: '100%', backgroundColor: 'rgb(182, 215, 205)', marginTop: 16, marginBottom: 16, borderRadius: 25,
+            elevation: 1,
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 3,
+          }}></View>
+          <Text style={{ position: 'absolute', right: 25, bottom: 16, color: 'white', fontSize: 12, marginTop: 16 }}>Show More</Text>
+        </View>
+
         <View style={styles.card}>
           <Text style={styles.cardHeading}>
             Today
@@ -124,10 +137,10 @@ const styles = StyleSheet.create({
     margin: 8,
     padding: 16,
     height: 250,
-    elevation: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    elevation: 1,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
