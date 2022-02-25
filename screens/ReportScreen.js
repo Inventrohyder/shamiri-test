@@ -96,6 +96,7 @@ export function ReportScreen({ navigation, route }) {
         backgroundColor='rgb(242, 232, 230)'
       />
       {value == 'Daily' ? <View>
+        {navigation.setOptions({ title: 'Wed Jan 16, 2022' })}
         <ProgressChart
           data={dailyData}
           width={screenWidth}
@@ -125,6 +126,7 @@ export function ReportScreen({ navigation, route }) {
         </View>
 
       </View> : <View>
+        {navigation.setOptions({ title: 'Jan 13 - Jan 19, 2022' })}
         <Text style={{ color: 'black', fontWeight: 'bold', margin: 16 }}>Mental Health</Text>
 
 

@@ -15,7 +15,7 @@ export default function App() {
           component={HomeScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Report" component={ReportScreen} options={{ title: 'Wed Jan 16, 2022' }} />
+        <Stack.Screen name="Report" component={ReportScreen} options={{ title: 'Report' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
