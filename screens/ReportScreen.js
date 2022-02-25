@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, StyleSheet, View, ScrollView, Dimensions, ImageBackground } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, Dimensions, Image } from 'react-native';
 import SegmentedControl from '@react-native-segmented-control/segmented-control';
 import {
   ProgressChart,
@@ -107,7 +107,10 @@ export function ReportScreen({ navigation, route }) {
           hideLegend={true}
         />
 
-        <View style={styles.card}>
+        <View style={[styles.card, {
+          height: 350,
+          padding: 24
+        }]}>
 
           <ProgressLine title='Mental Health' rating='8.5' color='rgb(242, 232, 230)' />
 
@@ -122,8 +125,7 @@ export function ReportScreen({ navigation, route }) {
         </View>
 
       </View> : <View>
-        <Text style={{ color: 'black', fontWeight: 'bold', margin: 16 }}
-        >Mental Health</Text>
+        <Text style={{ color: 'black', fontWeight: 'bold', margin: 16 }}>Mental Health</Text>
 
 
 
@@ -186,6 +188,19 @@ export function ReportScreen({ navigation, route }) {
 
         <View style={styles.separator} />
 
+        <Text style={{ color: 'black', fontWeight: 'bold', margin: 16 }}>Recommendation</Text>
+
+        <View style={[styles.card, { borderRadius: 25, padding: 0 }]}>
+
+          <Image source={require('../assets/touch.jpg')} style={{ width: '100%', height: 180, borderTopLeftRadius: 25, borderTopRightRadius: 25 }} />
+
+          <View style={{ alignSelf: "flex-start" }}>
+            <Text style={{ marginTop: 16, marginLeft: 16, color: 'rgb(195, 195, 195)', fontSize: 12, fontWeight: 'bold' }}>1-on-1 Session</Text>
+            <Text style={{ marginTop: 8, marginLeft: 16, marginBottom: 16, fontSize: 12 }}>Talk to our therapists about employee burnout?</Text>
+          </View>
+
+        </View>
+
       </View>}
     </ ScrollView >
   );
@@ -199,8 +214,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(255, 255, 255)',
     borderRadius: 30,
     marginTop: 8,
-    padding: 24,
-    height: 350,
     margin: 24,
     elevation: 1,
     flexDirection: 'column',
