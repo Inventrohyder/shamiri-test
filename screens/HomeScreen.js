@@ -1,4 +1,4 @@
-import { Entypo, Octicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import { Dimensions, ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native';
 import {
   ProgressChart
@@ -124,12 +124,11 @@ export function HomeScreen({ navigation }) {
           >
             <Text style={{
               fontSize: 12,
-              marginRight: 4,
               color: 'rgb(150, 150, 150)',
             }}>
               More
             </Text>
-            <Octicons name="chevron-right" size={16} color='rgb(150, 150, 150)' />
+            <Entypo name="chevron-thin-right" size={16} color='rgb(150, 150, 150)' />
           </View>
 
 
@@ -160,12 +159,11 @@ export function HomeScreen({ navigation }) {
           >
             <Text style={{
               fontSize: 12,
-              marginRight: 4,
               color: 'rgb(150, 150, 150)',
             }}>
               More
             </Text>
-            <Octicons name="chevron-right" size={16} color='rgb(150, 150, 150)' />
+            <Entypo name="chevron-thin-right" size={16} color='rgb(150, 150, 150)' />
           </View>
 
 
