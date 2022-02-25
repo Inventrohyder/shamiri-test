@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, Button, StyleSheet, Dimensions } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Dimensions, ImageBackground } from 'react-native';
 import { Octicons } from '@expo/vector-icons';
 import {
   ProgressChart,
@@ -27,54 +27,85 @@ export function HomeScreen({ navigation }) {
     colors: ['rgb(36, 51, 45)', 'rgb(150, 187, 174)', 'rgb(187, 208, 200)', 'rgb(210, 165, 157)', 'rgb(242, 232, 230)'],
   };
 
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <Button
-        title="Go to Jane's profile"
-        onPress={() => navigation.navigate('Report', { name: 'Jane' })} />
 
-      <View style={styles.card}>
-        <Text style={{
-          textTransform: 'uppercase',
-          fontStyle: 'bold',
-          color: 'rgb(150, 150, 150)',
-        }}>
-          Today
-        </Text>
+      <ScrollView>
 
-        <ProgressChart
-          data={data}
-          width={screenWidth * 0.8}
-          height={150}
-          strokeWidth={8}
-          radius={20}
-          withCustomBarColorFromData={true}
-          chartConfig={chartConfig}
-          hideLegend={false}
-        />
-
-        <View style={{
-          alignSelf: 'flex-end',
-          flexDirection: 'row',
-          alignItems: 'center'
-        }}>
-          <Text style={{
-            fontStyle: 'bold',
-            fontSize: 8,
-            marginRight: 8,
-            color: 'rgb(150, 150, 150)',
-          }}>
-            More
+        <View style={styles.card}>
+          <Text style={styles.cardHeading}>
+            Today
           </Text>
-          <Octicons name="chevron-right" size={16} color='rgb(150, 150, 150)' />
+
+
+          <ProgressChart
+            data={data}
+            width={screenWidth * 0.8}
+            height={150}
+            strokeWidth={8}
+            radius={20}
+            withCustomBarColorFromData={true}
+            chartConfig={chartConfig}
+            hideLegend={false}
+            style={{
+              alignSelf: 'center'
+            }}
+          />
+
+          <View style={styles.more}
+            onStartShouldSetResponder={() => navigation.navigate('Report')}
+          >
+            <Text style={{
+              fontSize: 12,
+              marginRight: 4,
+              color: 'rgb(150, 150, 150)',
+            }}>
+              More
+            </Text>
+            <Octicons name="chevron-right" size={16} color='rgb(150, 150, 150)' />
+          </View>
+
+
+
+
         </View>
 
+        <View style={styles.card}>
+          <Text style={styles.cardHeading}>
+            Your wellness plan
+          </Text>
+
+          <ImageBackground source={require('../assets/touch.jpg')} style={{ width: 100, height: 150, marginRight: 16 }} imageStyle={{ borderRadius: 25 }}>
+            <View style={styles.counselor}>
+              <Text style={{ color: 'white' }}>Veronican N.</Text>
+              <Text style={{ fontSize: 6, color: 'white' }}>Shamiri Licenced Counsellor</Text>
+            </View>
+          </ImageBackground>
+
+          <ImageBackground source={require('../assets/touch.jpg')} style={{ width: 100, height: 150 }} imageStyle={{ borderRadius: 25 }}>
+            <View style={styles.counselor}>
+              <Text style={{ color: 'white' }}>Sunehra A.</Text>
+              <Text style={{ fontSize: 6, color: 'white' }}>Shamiri Licenced Counsellor</Text>
+            </View>
+          </ImageBackground>
+
+          <View style={styles.more}
+          >
+            <Text style={{
+              fontSize: 12,
+              marginRight: 4,
+              color: 'rgb(150, 150, 150)',
+            }}>
+              More
+            </Text>
+            <Octicons name="chevron-right" size={16} color='rgb(150, 150, 150)' />
+          </View>
 
 
-      </View>
+        </View>
 
+      </ScrollView>
     </View >
 
   );
@@ -92,6 +123,35 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     margin: 8,
     padding: 16,
+    height: 250,
     elevation: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  cardHeading: {
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+    color: 'rgb(150, 150, 150)',
+    position: 'absolute',
+    top: 16,
+    left: 16,
+  },
+  more: {
+    alignSelf: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 16,
+    right: 16,
+  },
+  counselor: {
+    position: 'absolute',
+    bottom: 0,
+    padding: 8,
+    backgroundColor: 'rgba(150, 187, 174, 0.5)',
+    width: '100%',
+    borderBottomStartRadius: 25,
+    borderBottomEndRadius: 25,
   }
 });
